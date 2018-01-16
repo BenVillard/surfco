@@ -1,15 +1,56 @@
-function M = Contours2Surface_ez( C , varargin )
+function M = SurFCo( C , varargin )
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% SurFCo is a tool to compute a surface mesh from biological delineations, contours or segmentations. It has been developped at the Institute of Biomedical Engineering (IBME), at the University of Oxford, under the supervision of Professor Vicente Grau, and Dr. Ernesto Zacur.
+% 
+% This work has been published in the following publications, as such, if you use the code we would highly appreciate you citing them:
+% 
+% [1] B. Villard, V. Grau, and E. Zacur, Surface mesh reconstruction from cardiac MRI contours, J. Imaging, vol. 4(1), no. 16, 2018.
+% 
+% [2] B. Villard, V. Carapella, R. Ariga, V. Grau, and E. Zacur, Cardiac Mesh Reconstruction from Sparse, Heterogeneous Contours. In: Valdés Hernández M., González-Castro V. (Eds.) Medical Image Understanding and Analysis. MIUA 2017. Communications in Computer and Information Science, Vol. 723. Springer, Cham
+%
+% Please refer to [1] for a detailed workings of the method as well as for parameter choices. 
 % 
 %
+% Authors: Benjamin Villard, Ernesto Zacur <benjamin.villard@eng.ox.ac.uk>
+% Copyright © 2018 University of Oxford
+% Version: 0.1.0
+%
+% University of Oxford means the Chancellor, Masters and Scholars of
+% the University of Oxford, having an administrative office at
+% Wellington Square, Oxford OX1 2JD, UK. 
+%
+% This file is part of SurFCo.
+%
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details. The offer of this
+% program under the terms of the License is subject to the License
+% being interpreted in accordance with English Law and subject to any
+% action against the University of Oxford being under the jurisdiction
+% of the English Courts.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see
+% <http://www.gnu.org/licenses/>.
 %
 %
-%
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  %% defaults
+
+
+
+%% Default Parameters
+
 %%%%%%%%%%%%%%% Values obtained from Multi - Param Study %%%%%%%%%%%%%%  
-% FARTERPOINTS         = -2    ;
+% FARTERPOINTS         = -2    ; % In mm. The minimum distance beetween any point samples.
 % FARTHESTP_RESAMPLING = 20    ;
 % SMTHDEC_ITER         = 20    ;
 % TARGETREDUCTION      = 0.72  ;  %reduction at decimation step
