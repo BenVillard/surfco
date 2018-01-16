@@ -1,4 +1,4 @@
-# surfco: Surface Mesh From Contours
+# SurFCo: Surface Mesh From Contours
 
 # About 
 
