@@ -12,5 +12,5 @@ This work has been published in the following publications, if you use the code 
 
 # Download and Build
 
-The main file to run is "Contours2Surface.m".
+The main file to run is "SurFCo.m".
 
