@@ -73,8 +73,11 @@ function Z = meanNormal( N )
   m = mean(N,1);
   [ m(1),m(2),m(3) ] = cart2sph( m(1),m(2),m(3) );
   m = m([1,2]);
-  
-  m = Optimize( @(ae)E(M(ae)) , m , 'methods',{'conjugate','coordinate',1},'ls',{'quadratic','golden','quadratic'},struct('COMPUTE_NUMERICAL_JACOBIAN',{{'a'}}),'noplot','verbose',0);
+  try,
+        m = Optimize( @(ae)E(M(ae)) , m , 'methods',{'conjugate','coordinate',1},'ls',{'quadratic','golden','quadratic'},struct('COMPUTE_NUMERICAL_JACOBIAN',{{'a'}}),'noplot','verbose',0);
+  catch
+        m = fminsearch(@(ae) E(M(ae)),m);
+  end
   Z = M(m);
 end
 
