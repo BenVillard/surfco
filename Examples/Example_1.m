@@ -23,8 +23,7 @@ load('ExampleData_1');
 
 %% Run Mesh Reconstruction Algorithm
 
-[BLID, ULID] = getLids( ExampleData_1 ); % Obtain Arbitrary lids to close mesh
-M = SurFCo( ExampleData_1, 'bLID', BLID, 'uLID', ULID, 'plot' ); 
+M = SurFCo( ExampleData_1, 'getLids', 'plot' ); 
 
 %% Plot Newly Generated Mesh
 figure; 

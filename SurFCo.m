@@ -66,7 +66,7 @@ function M = SurFCo( C , varargin )
   
   
   d = fullfile( fileparts(which('SurFCo')));
-  if isdir( d ), setenv( 'path' , [ getenv('path') , ';' , d ] ); end
+  if isdir( d ), setenv( 'path' , [ getenv('path') , ';' , genpath(d) ] ); end; addpath(genpath(d)); 
   enableVTK                             ;        
   FARTERPOINTS         = []             ;  %number of points to use ( As Neg: breaking distance between points)
   FARTHESTP_RESAMPLING = []             ;  %resample seeds every Nth iteration
@@ -78,6 +78,7 @@ function M = SurFCo( C , varargin )
   MAX_DEFORMATION_ITS  = 250            ;  %Number of Deformation Iterations
   PERCENTAGE           = 0.1            ;  %percentage of pushing force
   VPLOT                = false          ;
+  GETLIDS              = true           ;
   DEFORM               = true           ;
   THRES_E              = 1e-5           ;
   INITIAL_MESH         = []             ;
@@ -92,10 +93,11 @@ function M = SurFCo( C , varargin )
   
   
   
-  [varargin,VPLOT]  = parseargs(varargin,'plot'    ,'$FORCE$',{true,VPLOT}) ;
-  [varargin,VPLOT]  = parseargs(varargin,'noplot'  ,'$FORCE$',{false,VPLOT});
-  vprintf           = @(varargin)[]                                         ;
-  if VPLOT, vprintf = @(varargin)title(sprintf(varargin{:}))                ; end
+  [varargin,VPLOT]  = parseargs(varargin,'plot'    ,'$FORCE$',{true,VPLOT})  ;
+  [varargin,VPLOT]  = parseargs(varargin,'noplot'  ,'$FORCE$',{false,VPLOT}) ;
+  [varargin,GETLIDS]= parseargs(varargin,'getLids' ,'$FORCE$',{true,GETLIDS});
+  vprintf           = @(varargin)[]                                          ;
+  if VPLOT, vprintf = @(varargin)title(sprintf(varargin{:}))                 ; end
 
 
   [varargin,~,TARGETREDUCTION     ]  = parseargs(varargin,'TARGETREDUCTION'                     ,'$DEFS$',TARGETREDUCTION     );
@@ -112,6 +114,7 @@ function M = SurFCo( C , varargin )
   [varargin,~,SMOOTH_STRENGTH     ]  = parseargs(varargin,'SMOOTH_STRENGTH','STIFFNESS'         ,'$DEFS$',SMOOTH_STRENGTH     );
   [varargin,~,SMOOTH_LAMBDA       ]  = parseargs(varargin,'SMOOTH_LAMBDA'                       ,'$DEFS$',SMOOTH_LAMBDA       );
   [varargin,~,SMOOTH_ALG          ]  = parseargs(varargin,'SMOOTH_ALG'                          ,'$DEFS$',SMOOTH_ALG          );
+ 
  
   %% remove empties
   C( all( cellfun( 'isempty' , C ) ,2) ,:) = [];
@@ -159,8 +162,12 @@ function M = SurFCo( C , varargin )
   
   %% initial MESH
   if isempty( INITIAL_MESH )
-    [varargin,~,bLID] = parseargs( varargin , 'BottomLID', 'bLID' , '$DEFS$' , bLID );
-    [varargin,~,uLID] = parseargs( varargin , 'UpperLID' , 'uLID' , '$DEFS$' , uLID );
+    if GETLIDS, 
+        [bLID, uLID] = getLids( C ); % Obtain Arbitrary lids to close mesh
+    else
+        [varargin,~,bLID] = parseargs( varargin , 'BottomLID', 'bLID' , '$DEFS$' , bLID );
+        [varargin,~,uLID] = parseargs( varargin , 'UpperLID' , 'uLID' , '$DEFS$' , uLID );
+    end
     [varargin,~,RESOLUTION] = parseargs( varargin , 'RESOLUTION' , '$DEFS$' , RESOLUTION );
 
     M = computeRuledSurface( C , bLID , uLID , RESOLUTION , VPLOT );
