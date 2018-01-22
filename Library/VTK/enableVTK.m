@@ -8,10 +8,10 @@ function enableVTK
       case 'PCWIN64'
         
         while 1
-          d = fullfile( fileparts(which('enableVTK')) , 'vtk' , 'w64' );
+          d = fullfile( fileparts(which('enableVTK')) , 'w64' );
           if isdir( d ), setenv( 'path' , [ getenv('path') , ';' , d ] ); break; end
           
-          d = fullfile( fileparts(which('enableVTK')) , 'vtk' , 'w64_mt' );
+          d = fullfile( fileparts(which('enableVTK')), 'w64_mt' );
           if isdir( d ), setenv( 'path' , [ getenv('path') , ';' , d ] ); break; end
           
           break;
