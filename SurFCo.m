@@ -64,7 +64,10 @@ function M = SurFCo( C , varargin )
 % SMOOTH_LAMBDA        = 0.1   ;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   
-  enableVTK                             ;
+  
+  d = fullfile( fileparts(which('SurFCo')));
+  if isdir( d ), setenv( 'path' , [ getenv('path') , ';' , d ] ); end
+  enableVTK                             ;        
   FARTERPOINTS         = []             ;  %number of points to use ( As Neg: breaking distance between points)
   FARTHESTP_RESAMPLING = []             ;  %resample seeds every Nth iteration
   SMTHDEC_ITER         = []             ;  %number of Smoothing + Decimation iteration 
