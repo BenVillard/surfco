@@ -12,5 +12,9 @@ This work has been published in the following publications, if you use the code 
 
 # Download and Build
 
-The main file to run is "SurFCo.m".
+SurFCo uses VTK files. Currently this package only works on windows machines. If you have VTK enabled on MAC, please replace the relevant VTK files (MAC Compiled) inside the private/VTK folder. 
+
+The main file to run is "SurFCo.m". Please refer to [1] for help with parameter selection. Note: SurFCo.m can be run as is. 
+
+An example dataset is provided to ensure SurFCo runs properly. Please run Example_1.m as a test run. 
 
