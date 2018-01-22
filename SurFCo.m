@@ -2,16 +2,50 @@ function M = SurFCo( C , varargin )
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% SurFCo is a tool to compute a surface mesh from biological delineations, contours or segmentations. It has been developped at the Institute of Biomedical Engineering (IBME), at the University of Oxford, under the supervision of Professor Vicente Grau, and Dr. Ernesto Zacur.
+% SurFCo is a tool to compute a surface mesh from biological delineations, 
+% contours or segmentations. It has been developped at the Institute of 
+% Biomedical Engineering (IBME), at the University of Oxford, under the 
+% supervision of Professor Vicente Grau, and Dr. Ernesto Zacur.
 % 
-% This work has been published in the following publications, as such, if you use the code we would highly appreciate you citing them:
+% This work has been published in the following publications, as such, 
+% if you use the code we would highly appreciate you citing them:
 % 
-% [1] B. Villard, V. Grau, and E. Zacur, Surface mesh reconstruction from cardiac MRI contours, J. Imaging, vol. 4(1), no. 16, 2018.
+% [1] B. Villard, V. Grau, and E. Zacur, Surface mesh reconstruction from
+%     cardiac MRI contours, J. Imaging, vol. 4(1), no. 16, 2018.
 % 
-% [2] B. Villard, V. Carapella, R. Ariga, V. Grau, and E. Zacur, Cardiac Mesh Reconstruction from Sparse, Heterogeneous Contours. In: Valdés Hernández M., González-Castro V. (Eds.) Medical Image Understanding and Analysis. MIUA 2017. Communications in Computer and Information Science, Vol. 723. Springer, Cham
+% [2] B. Villard, V. Carapella, R. Ariga, V. Grau, and E. Zacur, Cardiac 
+%     Mesh Reconstruction from Sparse, Heterogeneous Contours. In: Valdés 
+%     Hernández M., González-Castro V. (Eds.) Medical Image Understanding
+%     and Analysis. MIUA 2017. Communications in Computer and Information 
+%     Science, Vol. 723. Springer, Cham
 %
-% Please refer to [1] for a detailed workings of the method as well as for parameter choices. 
+% Please refer to [1] for a detailed workings of the method as well as for
+% parameter choices. 
 % 
+%
+%
+%  INPUTS: 
+%
+%           C: A set of contours in a cell format: C =  {[ N x 3 ]}
+%                                                       {[ N x 3 ]}
+%                                                           ...
+%                                                       {[ N x 3 ]}
+%
+%    varargin: Optional parameters inherent to the function as well as for
+%              visualization purposes. Please see default parameters for
+%              the complete list of the inherent algorithm parameters. As 
+%        - Visualization parameters: 'plot', 'noplot'. 
+%        - Closing the mesh: The mesh can be closed. By default it is open. 
+%                 The parameter 'getLids' automatically computes points to 
+%                 close the mesh. However, the parameters 'bLID' and 'uLID',
+%                 can be given as an input to the function for user chosen 
+%                 points. 
+%
+%
+%  OUTPUTS:                
+%           
+%            M: Surface MESH:       M.xyz (Vertices)
+%                                   M.tri ( Faces  )
 %
 % Authors: Benjamin Villard, Ernesto Zacur <benjamin.villard@eng.ox.ac.uk>
 % Copyright © 2018 University of Oxford
@@ -21,7 +55,7 @@ function M = SurFCo( C , varargin )
 % the University of Oxford, having an administrative office at
 % Wellington Square, Oxford OX1 2JD, UK. 
 %
-% This file is part of SurFCo.
+% This file is part of the SurFCo package.
 %
 % This program is free software: you can redistribute it and/or modify
 % it under the terms of the GNU General Public License as published by
