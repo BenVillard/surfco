@@ -12,7 +12,7 @@ This work has been published in the following publications, if you use the code 
 
 # Download and Build
 
-SurFCo uses VTK files. Currently this package only works on windows machines. If you have VTK enabled on MAC, please replace the relevant VTK files (MAC Compiled) inside the private/VTK folder. 
+SurFCo uses VTK files. Currently this package only works on windows machines. If you have VTK enabled on MAC, please replace the relevant VTK files (MAC Compiled) inside the "Library/VTK" folder. 
 
 The main file to run is "SurFCo.m". Please refer to [1] for help with parameter selection. Note: SurFCo.m can be run as is. 
 
