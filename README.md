@@ -24,5 +24,7 @@ The main file to run is "SurFCo.m". Please refer to [1] for help with parameter 
 
 An example dataset is provided to ensure SurFCo runs properly. Please run Example_1.m as a test run. 
 
-<img align="left" width="20%" src="/Ims/Mesh_1.png"><img align="right" width="30%" src="/Ims/Mesh_2.png">
+<p align="center">
+  <img src="/Ims/Mesh_1.png" width="50%">
+</p>
 
