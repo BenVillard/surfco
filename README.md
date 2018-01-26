@@ -1,5 +1,8 @@
 # SurFCo: Surface Mesh From Contours
 
+![SurRCo Framework](/Ims/Framework.png)
+Format: ![Alt Text](url)
+
 # About 
 
 SurFCo is a Matlab toolbox with some C++ Scripts to compute a surface mesh from biological delineations, contours or segmentations. It has been developped at the Institute of Biomedical Engineering (IBME), at the University of Oxford, under the supervision of Professor Vicente Grau, and Dr. Ernesto Zacur. 
