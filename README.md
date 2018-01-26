@@ -1,10 +1,10 @@
 # SurFCo: Surface Mesh From Contours
 
-<img align="left" width="30%" src="/Ims/Mesh_1.png">
+<img align="left" width="20%" src="/Ims/Mesh_1.png">
 <p align="center">
   <img src="/Ims/Framework.png" width="40%">
 </p>
-<img align="right" width="40%" src="/Ims/Mesh_2.png">
+<img align="right" width="30%" src="/Ims/Mesh_2.png">
 
 
 # About 
