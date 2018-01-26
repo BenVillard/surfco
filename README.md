@@ -1,6 +1,6 @@
 # SurFCo: Surface Mesh From Contours
 
-![SurRCo Framework](/Ims/Framework.png){:height="50%" width="50%"}
+<img src="/Ims/Framework.png" width="40%">
 
 # About 
 
