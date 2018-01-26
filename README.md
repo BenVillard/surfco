@@ -1,6 +1,6 @@
 # SurFCo: Surface Mesh From Contours
 
-<span style="display:block;text-align:center"><img src="/Ims/Framework.png" width="40%"><img src="/Ims/Mesh_1.png" width="30%"><img src="/Ims/Mesh_2.png" width="30%"></div>
+<span style="display:block;text-align:center"><img src="/Ims/Framework.png" width="40%"></div>
 
 # About 
 
